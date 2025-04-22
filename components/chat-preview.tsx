@@ -1,0 +1,103 @@
+"use client"
+
+import { useI18n } from "./i18n-provider"
+import { Avatar } from "@/components/ui/avatar"
+import { User, Bot } from "lucide-react"
+import { useEffect, useState } from "react"
+
+export default function ChatPreview() {
+  const { t } = useI18n()
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
+  const [typing, setTyping] = useState(false)
+  const [currentText, setCurrentText] = useState("")
+
+  const conversation = [
+    { role: "user", content: t("chatPreview.previewMessage1") },
+    { role: "assistant", content: t("chatPreview.previewResponse1") },
+    { role: "user", content: t("chatPreview.previewMessage2") },
+    { role: "assistant", content: t("chatPreview.previewResponse2") },
+  ]
+
+  useEffect(() => {
+    const message = conversation[currentMessageIndex]
+
+    if (message.role === "assistant") {
+      setTyping(true)
+      let i = 0
+      setCurrentText("")
+
+      const typingInterval = setInterval(() => {
+        if (i < message.content.length) {
+          setCurrentText((prev) => prev + message.content.charAt(i))
+          i++
+        } else {
+          clearInterval(typingInterval)
+          setTyping(false)
+
+          // Move to next message after a delay
+          setTimeout(() => {
+            if (currentMessageIndex < conversation.length - 1) {
+              setCurrentMessageIndex(currentMessageIndex + 1)
+            } else {
+              // Reset to beginning after a longer delay
+              setTimeout(() => {
+                setCurrentMessageIndex(0)
+              }, 3000)
+            }
+          }, 2000)
+        }
+      }, 50)
+
+      return () => clearInterval(typingInterval)
+    } else {
+      // For user messages, show immediately then move to next
+      setTimeout(() => {
+        if (currentMessageIndex < conversation.length - 1) {
+          setCurrentMessageIndex(currentMessageIndex + 1)
+        }
+      }, 1500)
+    }
+  }, [currentMessageIndex])
+
+  return (
+    <div className="flex flex-col h-[400px]">
+      <div className="p-3 border-b flex items-center justify-between bg-background">
+        <div className="font-medium">{t("general.appTitle")}</div>
+      </div>
+
+      <div className="flex-1 p-4 overflow-y-auto space-y-4">
+        {conversation.slice(0, currentMessageIndex + 1).map((message, index) => {
+          const isLastMessage = index === currentMessageIndex
+          const isUser = message.role === "user"
+
+          return (
+            <div key={index} className={`flex items-start gap-3 ${isUser ? "justify-end" : "justify-start"}`}>
+              {!isUser && (
+                <Avatar className="h-8 w-8">
+                  <Bot className="h-5 w-5" />
+                </Avatar>
+              )}
+
+              <div
+                className={`rounded-lg px-3 py-2 max-w-[80%] ${isUser ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+              >
+                {isLastMessage && !isUser ? currentText : message.content}
+                {isLastMessage && !isUser && typing && <span className="ml-1 animate-pulse">▋</span>}
+              </div>
+
+              {isUser && (
+                <Avatar className="h-8 w-8">
+                  <User className="h-5 w-5" />
+                </Avatar>
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="p-3 border-t">
+        <div className="bg-muted rounded-md px-3 py-2 text-sm text-muted-foreground">{t("placeholders.messagePlaceholder")}</div>
+      </div>
+    </div>
+  )
+}

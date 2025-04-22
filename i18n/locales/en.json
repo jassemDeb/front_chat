@@ -1,0 +1,140 @@
+{
+  "general": {
+    "appTitle": "AI Chatbot",
+    "send": "Send",
+    "typing": "AI is typing..."
+  },
+  "chatInterface": {
+    "newChat": "New Chat",
+    "clearChat": "Clear Chat",
+    "saveChat": "Save Chat",
+    "chatHistory": "Chat History"
+  },
+  "settings": {
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "models": {
+    "selectModel": "Select AI Model",
+    "modelSettings": "Model Settings"
+  },
+  "placeholders": {
+    "messagePlaceholder": "Type a message...",
+    "chatNamePlaceholder": "Chat name..."
+  },
+  "errors": {
+    "errorMessage": "Something went wrong. Please try again.",
+    "noChats": "No saved chats"
+  },
+  "user": {
+    "userProfile": "User Profile",
+    "userSummary": "User Summary"
+  },
+  "landingPage": {
+    "startChatting": "Start Chatting",
+    "learnMore": "Learn More",
+    "betaVersion": "Beta Version",
+    "heroTitle": "Experience the Future of Conversational AI",
+    "heroTitleHighlight": "Today",
+    "heroSubtitle": "Engage with multiple AI models in your preferred language, with personalized context and secure chat history."
+  },
+  "features": {
+    "featuresTitle": "Powerful Features",
+    "featuresSubtitle": "Discover what makes our AI chatbot stand out from the rest",
+    "featureMultilingualTitle": "Multilingual Support",
+    "featureMultilingualDescription": "Chat in English, Arabic, and more languages with seamless switching between them.",
+    "featureMultiModelTitle": "Multiple AI Models",
+    "featureMultiModelDescription": "Access various AI models from OpenAI, Anthropic, and Google in one interface.",
+    "featureChatHistoryTitle": "Chat History",
+    "featureChatHistoryDescription": "Save and revisit your conversations anytime, organized and searchable.",
+    "featurePersonalizationTitle": "Personalization",
+    "featurePersonalizationDescription": "AI learns from your interactions to provide more relevant responses over time.",
+    "featureSecurityTitle": "Secure & Private",
+    "featureSecurityDescription": "Your conversations are private and secure with end-to-end encryption.",
+    "featureAITitle": "Advanced AI",
+    "featureAIDescription": "Experience state-of-the-art AI capabilities with continuous improvements.",
+    "tryItNow": "Try It Now"
+  },
+  "supportedModels": {
+    "supportedModelsTitle": "Supported AI Models",
+    "supportedModelsSubtitle": "Choose from a variety of leading AI models to suit your needs",
+    "gpt4Description": "OpenAI's most advanced model with superior reasoning capabilities",
+    "gpt35Description": "Fast and efficient model for everyday tasks and conversations",
+    "claudeOpusDescription": "Anthropic's flagship model with exceptional comprehension and reasoning",
+    "claudeSonnetDescription": "Balanced performance and efficiency for most use cases",
+    "geminiDescription": "Google's multimodal AI with strong reasoning and knowledge",
+    "modelFeature1": "Advanced reasoning and problem-solving",
+    "modelFeature2": "Excellent at understanding context and nuance",
+    "modelFeature3": "Supports complex, multi-step instructions",
+    "modelFeature4": "Fast response times for fluid conversations",
+    "modelFeature5": "Cost-effective for everyday use",
+    "modelFeature6": "Good balance of capabilities and performance",
+    "modelFeature7": "Superior understanding of complex topics",
+    "modelFeature8": "Excellent at following detailed instructions",
+    "modelFeature9": "Reduced hallucinations and high accuracy",
+    "modelFeature10": "Balanced performance and efficiency",
+    "modelFeature11": "Strong reasoning with faster responses",
+    "modelFeature12": "Great for most everyday tasks",
+    "modelFeature13": "Excellent knowledge of recent events",
+    "modelFeature14": "Strong multimodal capabilities",
+    "modelFeature15": "Efficient processing of various inputs"
+  },
+  "faq": {
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Find answers to common questions about our AI chatbot",
+    "faqQuestion1": "How secure are my conversations?",
+    "faqAnswer1": "Your conversations are encrypted and stored securely. We do not share your data with third parties, and you can delete your chat history at any time.",
+    "faqQuestion2": "Which languages are supported?",
+    "faqAnswer2": "Currently, we fully support English and Arabic with complete interface translations. The AI models can understand and respond in many more languages.",
+    "faqQuestion3": "Can I use this for professional purposes?",
+    "faqAnswer3": "Our chatbot is designed for both personal and professional use. Many professionals use it for research, content creation, programming assistance, and more.",
+    "faqQuestion4": "How does the AI personalization work?",
+    "faqAnswer4": "Our system analyzes your interactions to build a user summary that helps the AI provide more relevant responses. This is all done securely and privately.",
+    "faqQuestion5": "Is there a limit to how much I can chat?",
+    "faqAnswer5": "Usage limits depend on your subscription plan. Free users have a generous monthly allowance, while premium users enjoy higher or unlimited usage."
+  },
+  "cta": {
+    "ctaTitle": "Ready to Experience the Future of AI?",
+    "ctaSubtitle": "Start chatting with our advanced AI models and discover how they can assist you in your daily tasks."
+  },
+  "footer": {
+    "footerLink1": "Privacy Policy",
+    "footerLink2": "Terms of Service",
+    "footerLink3": "Contact Us",
+    "footerLink4": "About",
+    "footerRights": "All rights reserved."
+  },
+  "chatPreview": {
+    "previewMessage1": "How can AI help with language translation?",
+    "previewResponse1": "AI can provide real-time translations between multiple languages with high accuracy. It can preserve context, tone, and cultural nuances better than traditional translation tools.",
+    "previewMessage2": "That's impressive! Can it handle technical content?",
+    "previewResponse2": "Modern AI models are trained on diverse technical content and can accurately translate specialized terminology in fields like medicine, law, engineering, and more."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Full Name",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "createAccount": "Create an account",
+    "welcomeBack": "Welcome back",
+    "signInDescription": "Enter your credentials to access your account",
+    "signUpDescription": "Enter your information to create an account",
+    "termsAgree": "By signing up, you agree to our",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithGithub": "Sign in with GitHub",
+    "or": "or",
+    "continueWithEmail": "Continue with Email"
+  }
+}
