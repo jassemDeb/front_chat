@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: multilingual-chat-frontend
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://148.113.181.101:8000
+    restart: unless-stopped
+    networks:
+      - frontend-network
+    # Uncomment the following lines if you need to mount volumes for development
+    # volumes:
+    #   - ./:/app
+    #   - /app/node_modules
+    #   - /app/.next
+
+networks:
+  frontend-network:
+    name: frontend-network
+    driver: bridge
