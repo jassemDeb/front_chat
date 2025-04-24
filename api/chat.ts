@@ -1,6 +1,6 @@
 import { authFetch } from "@/utils/auth";
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'http://148.113.181.101:8000/api';
 
 export interface ChatMessage {
   id: number;
