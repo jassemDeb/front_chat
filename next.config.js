@@ -2,15 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
-  experimental: {
-    // This will allow Next.js to create a standalone directory
-    outputStandalone: true,
-  },
-  i18n: {
-    // Support for internationalization based on the memories
-    locales: ['en', 'ar'],
-    defaultLocale: 'en',
-  },
+  // Removed experimental.outputStandalone as it's deprecated
+  // Removed i18n configuration as it's not supported in App Router
 }
 
 module.exports = nextConfig
