@@ -30,46 +30,19 @@ WORKDIR /app
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Set the correct permission for prerender cache
-RUN mkdir -p .next
-RUN chown nextjs:nodejs .next
+# Install production dependencies only
+COPY package.json ./
+RUN yarn install --production --frozen-lockfile
 
 # Copy necessary files from builder
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./
-COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/next.config.js ./
 
-# Copy .next folder - handle both standalone and non-standalone modes
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-
-# Create a simple server.js file if standalone mode is not available
-RUN if [ ! -d ".next/standalone" ]; then \
-    echo "Standalone directory not found, using regular Next.js server" && \
-    echo "const { createServer } = require('http');" > server.js && \
-    echo "const { parse } = require('url');" >> server.js && \
-    echo "const next = require('next');" >> server.js && \
-    echo "const app = next({ dev: false });" >> server.js && \
-    echo "const handle = app.getRequestHandler();" >> server.js && \
-    echo "const port = process.env.PORT || 3001;" >> server.js && \
-    echo "app.prepare().then(() => {" >> server.js && \
-    echo "  createServer((req, res) => {" >> server.js && \
-    echo "    const parsedUrl = parse(req.url, true);" >> server.js && \
-    echo "    handle(req, res, parsedUrl);" >> server.js && \
-    echo "  }).listen(port, '0.0.0.0', (err) => {" >> server.js && \
-    echo "    if (err) throw err;" >> server.js && \
-    echo "    console.log(\`> Ready on http://0.0.0.0:\${port}\`);" >> server.js && \
-    echo "  });" >> server.js && \
-    echo "});" >> server.js; \
-else \
-    echo "Using standalone mode" && \
-    cp -r .next/standalone/* ./ && \
-    cp -r .next/static ./.next/static; \
-fi
-
-# Switch to non-root user
+# Switch to non-root user for security
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+RUN chown -R nextjs:nodejs /app
 USER nextjs
 
 EXPOSE 3001
@@ -78,4 +51,4 @@ ENV PORT 3001
 ENV HOSTNAME "0.0.0.0"
 
 # Start the application
-CMD ["node", "server.js"]
+CMD ["yarn", "start", "-p", "3001"]
