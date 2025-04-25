@@ -1,5 +1,7 @@
 import { authFetch } from "@/utils/auth";
+import env from "@/utils/env";
 
+// Use relative API URL for proxied requests
 const API_URL = '/api';
 
 export interface LoginCredentials {
@@ -32,9 +34,9 @@ export interface AuthResponse {
 export const login = async (credentials: LoginCredentials): Promise<AuthResponse> => {
   try {
     console.log('Attempting login with credentials:', { email: credentials.email, passwordLength: credentials.password?.length });
-    console.log('API URL:', '/api/auth/login/');
+    console.log('API URL:', `${API_URL}/auth/login/`);
     
-    const response = await fetch(`/api/auth/login/`, {
+    const response = await fetch(`${API_URL}/auth/login/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +84,7 @@ export const register = async (userData: RegisterData): Promise<AuthResponse> =>
       language: userData.language_preference 
     });
     
-    const response = await fetch(`/api/auth/register/`, {
+    const response = await fetch(`${API_URL}/auth/register/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -136,7 +138,7 @@ export const refreshToken = async (refresh: string): Promise<{ access: string }>
   try {
     console.log('Attempting to refresh token');
     
-    const response = await fetch(`/api/auth/refresh/`, {
+    const response = await fetch(`${API_URL}/auth/refresh/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

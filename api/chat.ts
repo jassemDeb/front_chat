@@ -1,5 +1,7 @@
 import { authFetch } from "@/utils/auth";
+import env from "@/utils/env";
 
+// Use relative API URL for proxied requests
 const API_URL = '/api';
 
 export interface ChatMessage {
