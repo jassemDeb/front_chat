@@ -51,7 +51,7 @@ export const refreshAccessToken = async (): Promise<string | null> => {
       throw new Error('No refresh token available');
     }
     
-    const response = await fetch('http://148.113.181.101:8000/api/auth/refresh/', {
+    const response = await fetch('/api/auth/refresh/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ export const logout = async (): Promise<boolean> => {
     
     if (refreshToken) {
       // Call the logout endpoint to blacklist the refresh token
-      await fetch('http://148.113.181.101:8000/api/auth/logout/', {
+      await fetch('/api/auth/logout/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
